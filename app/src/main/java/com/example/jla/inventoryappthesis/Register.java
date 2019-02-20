@@ -9,7 +9,7 @@ import android.widget.Spinner;
 
 public class Register extends AppCompatActivity {
 
-    Spinner spinner2;
+
     EditText editBusinessName, editUsername, editPassword;
     myDbAdapter helper;
 
@@ -31,24 +31,24 @@ public class Register extends AppCompatActivity {
             String t1 = editBusinessName.getText().toString();
             String t2 = editUsername.getText().toString();
             String t3 = editPassword.getText().toString();
-            String t4 = spinner2.getSelectedItem().toString();
 
-            if(t1.isEmpty() || t2.isEmpty() || t3.isEmpty() || t4.isEmpty()){
+
+            if(t1.isEmpty() || t2.isEmpty() || t3.isEmpty() ){
                     Message.message(getApplicationContext(), "Please fill in the blanks");
             }else{
-                long id = helper.insertData(t1, t2, t3, t4);
-                if(id<=0){
+                long id = helper.insertData(t1, t2, t3);
+                    if(id<=0){
                     Message.message(getApplicationContext(), "Insertion Unsuccessful");
                     editBusinessName.setText("");
                     editUsername.setText("");
                     editPassword.setText("");
-                    spinner2.setAdapter(null);
+
                 }else{
                     Message.message(getApplicationContext(), "Insertion Successful");
                     editBusinessName.setText("");
                     editUsername.setText("");
                     editPassword.setText("");
-                    spinner2.setAdapter(null);
+
                 }
             }
     }

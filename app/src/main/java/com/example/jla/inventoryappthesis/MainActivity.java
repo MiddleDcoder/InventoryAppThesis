@@ -45,9 +45,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Calling EdiText is empty or no method.
+
                 CheckEditTextStatus();
                 //Calling Login method.
                 LoginFunction();
+
             }
         });
 
@@ -94,11 +96,22 @@ public class MainActivity extends AppCompatActivity {
         }else{
 
             //If any of login EditText empty then this block will be executed.
-            Toast.makeText(MainActivity.this, "Please Enter UserName or Password", Toast.LENGTH_LONG).show();
+            pleaseFillUp();
 
         }
     }
 
+
+    // checking no entered data in EditText
+
+    public void pleaseFillUp(){
+
+        UsernameHolder = editTextUsername.getText().toString();
+        PasswordHolder = editTextPassword.getText().toString();
+          if(TextUtils.isEmpty(UsernameHolder) || TextUtils.isEmpty(PasswordHolder) ){
+              Toast.makeText(MainActivity.this, "Please fill up the form", Toast.LENGTH_LONG).show();
+          }
+    }
 
     //Checking EditText is empty or not.
     public  void CheckEditTextStatus(){

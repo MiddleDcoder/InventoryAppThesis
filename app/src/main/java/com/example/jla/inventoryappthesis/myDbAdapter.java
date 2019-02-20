@@ -18,7 +18,7 @@ public class myDbAdapter {
 
     // methods for CRUD database
 
-    public long insertData(String business_name, String name, String pass, String position){
+    public long insertData(String business_name, String name, String pass){
 
         SQLiteDatabase dbb = myhelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();

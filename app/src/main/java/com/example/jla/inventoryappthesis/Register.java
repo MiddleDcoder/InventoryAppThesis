@@ -20,11 +20,6 @@ public class Register extends AppCompatActivity {
 
         helper = new myDbAdapter(this);
 
-        spinner2 = findViewById(R.id.spinner2);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this, R.array.usertype, R.layout.support_simple_spinner_dropdown_item);
-        spinner2.setAdapter(adapter);
-
 
         editBusinessName = findViewById(R.id.editBusinessName);
         editUsername = findViewById(R.id.editUsername);

@@ -1,7 +1,4 @@
 <resources>
     <string name="app_name">InventoryAppThesis</string>
-    <string-array name="usertype">
-        <item>Admin</item>
-        <item>Employee</item>
-    </string-array>
+
 </resources>

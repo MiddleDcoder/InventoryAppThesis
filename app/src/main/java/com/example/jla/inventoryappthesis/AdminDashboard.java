@@ -11,7 +11,7 @@ public class AdminDashboard extends AppCompatActivity {
 
     String UsernameHolder;
     TextView TextViewUsername;
-    Button btn_inboundLogistics;
+    Button btn_inboundLogistics, btn_outboundLogistics, btn_operations, btn_inventoryStocks, btn_statisticalReports;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +27,47 @@ public class AdminDashboard extends AppCompatActivity {
         TextViewUsername.setText(TextViewUsername.getText().toString()+UsernameHolder);
 
         btn_inboundLogistics = findViewById(R.id.btn_inboundLogistics);
+        btn_outboundLogistics = findViewById(R.id.btn_outboundLogistics);
+        btn_operations = findViewById(R.id.btn_operations);
+        btn_inventoryStocks = findViewById(R.id.btn_inventory_stock);
+        btn_statisticalReports = findViewById(R.id.btn_statistical_reports);
 
         btn_inboundLogistics.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(AdminDashboard.this, InboundLogisticsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_outboundLogistics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminDashboard.this, OutboundLogistics.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_operations.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminDashboard.this, Operations.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_inventoryStocks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminDashboard.this, InventoryStocks.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_statisticalReports.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminDashboard.this, StatisticalReports.class);
                 startActivity(intent);
             }
         });

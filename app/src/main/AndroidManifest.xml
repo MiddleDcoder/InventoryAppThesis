@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".InboundLogisticsActivity"></activity>
+        <activity android:name=".StatisticalReports"></activity>
+        <activity android:name=".InventoryStocks" />
+        <activity android:name=".Operations" />
+        <activity android:name=".OutboundLogistics" />
+        <activity android:name=".InboundLogisticsActivity" />
         <activity android:name=".AdminDashboard" />
         <activity android:name=".Register" />
         <activity android:name=".MainActivity">

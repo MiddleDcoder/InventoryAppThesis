@@ -18,9 +18,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     Button btnLogin, btnRegister;
-    EditText editTextUsername, editTextPassword;
+    EditText editTextUsername, editTextPassword; //, editTextBusinessName;
 
-    String UsernameHolder, PasswordHolder;
+    String UsernameHolder, PasswordHolder ; //, BusinessNameHolder;
     Boolean EditTextEmptyHolder;
     SQLiteDatabase sqLiteDatabaseObj;
     SQLiteOpenHelper sqLiteHelper;
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        sqLiteHelper = new myDbAdapter.myDbHelper(this);
+        sqLiteHelper = new myDbAdapter (this);
 
         btnLogin = findViewById(R.id.btnLogin);
         editTextUsername = findViewById(R.id.editText);
@@ -81,13 +81,13 @@ public class MainActivity extends AppCompatActivity {
             sqLiteDatabaseObj = sqLiteHelper.getWritableDatabase();
 
             //Adding search username query to cursor.
-            cursor = sqLiteDatabaseObj.query(myDbAdapter.myDbHelper.TABLE_NAME, null, " "+myDbAdapter.myDbHelper.NAME + "=?", new String[]{UsernameHolder}, null, null, null );
+            cursor = sqLiteDatabaseObj.query(myDbAdapter.TABLE_NAME, null, " "+myDbAdapter.Table_Column_1_Name + "=?", new String[]{UsernameHolder}, null, null, null );
 
                 while (cursor.moveToNext()){
                     if(cursor.isFirst()){
                         cursor.moveToFirst();
                         //Storing Password associated with entered email.
-                    TempPassword = cursor.getString(cursor.getColumnIndex(myDbAdapter.myDbHelper.PASSWORD));
+                    TempPassword = cursor.getString(cursor.getColumnIndex(myDbAdapter.Table_Column_2_Password));
 
                     //closing cursor
                         cursor.close();

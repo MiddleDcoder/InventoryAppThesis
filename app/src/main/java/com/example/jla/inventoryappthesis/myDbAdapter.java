@@ -1,82 +1,44 @@
 package com.example.jla.inventoryappthesis;
 
-import android.content.ContentValues;
+
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class myDbAdapter {
-
-    myDbHelper myhelper;
+public class myDbAdapter  extends SQLiteOpenHelper{
 
 
-    public myDbAdapter(Context context)
-    {
-        myhelper = new myDbHelper(context);
+    static String DATABASE_NAME="UserDataBase";
+    public static final String TABLE_NAME="UserTable";
+    public static final String Table_Column_ID="id";
+    public static final String Table_Column_1_Name="name";
+    public static final String Table_Column_2_Password="password";
+    public static final String Table_Column_3_BusinessName="business";
+
+
+
+
+    public myDbAdapter(Context context) {
+        super(context, DATABASE_NAME, null, 1);
     }
 
-    // methods for CRUD database
+    @Override
+    public void onCreate(SQLiteDatabase database) {
 
-    public long insertData( String name, String pass){
+       /* String CREATE_TABLE="CREATE TABLE IF NOT EXISTS "+TABLE_NAME+" ("+Table_Column_ID+" INTEGER PRIMARY KEY, "+Table_Column_1_Name+" VARCHAR, "+Table_Column_2_Email+" VARCHAR, "+Table_Column_3_Password+" VARCHAR)";
+        database.execSQL(CREATE_TABLE); */
 
-        SQLiteDatabase dbb = myhelper.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-       // contentValues.put(myDbHelper.BUSINESS_NAME, business_name);
-        contentValues.put(myDbHelper.NAME, name);
-       contentValues.put(myDbHelper.PASSWORD, pass);
+        String CREATE_TABLE="CREATE TABLE IF NOT EXISTS "+TABLE_NAME+" ("+Table_Column_ID+" INTEGER PRIMARY KEY, "+Table_Column_1_Name+" VARCHAR, "+Table_Column_2_Password+" VARCHAR, "+Table_Column_3_BusinessName+" VARCHAR "+");";
+        database.execSQL(CREATE_TABLE);
 
-        long id = dbb.insert(myDbHelper.TABLE_NAME,null, contentValues);
-        return id;
 
     }
 
-        static class myDbHelper extends SQLiteOpenHelper{
-
-            private static final String DATABASE_NAME="myDatabase";   // Database Name
-            public static final String TABLE_NAME = "myTable";    // Table Name
-            private static final int DATABASE_Version = 1; // Database Version
-            private static final String UID = "id";  // Column I (Primary Key)
-           // public static final String BUSINESS_NAME = "Business_Name";  //Column II
-            public static final String NAME = "Name";  //Column III
-            public static final String PASSWORD = "Password"; //Column IV
-
-
-     private static  final String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME +"(" +UID +"INTEGER PRIMARY KEY AUTOINCREMENT, "+NAME+" VARCHAR(255),"+PASSWORD+" VARCHAR(255)"+ ");";
-
-    private static final String DROP_TABLE = "DROP TABLE IF EXISTS " +TABLE_NAME;
-
-            private final Context context;
-
-            public myDbHelper(Context context){
-                super(context, DATABASE_NAME, null, DATABASE_Version);
-                this.context = context;
-            }
-
-            @Override
-            public void onCreate(SQLiteDatabase db) {
-
-                try{
-                    db.execSQL(CREATE_TABLE);
-                }catch (Exception e){
-                        Message.message(context, ""+e);
-                }
-
-            }
-
-            @Override
-            public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-                try{
-                    Message.message(context, "OnUpgrade");
-                    db.execSQL(DROP_TABLE);
-                }catch (Exception e){
-                    Message.message(context, ""+e);
-                }
-
-            }
-        }
-
-
-
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldversion, int newversion) {
+        db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
+        onCreate(db);
+    }
 }
+
+

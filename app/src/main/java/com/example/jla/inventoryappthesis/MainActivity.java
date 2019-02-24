@@ -28,10 +28,13 @@ public class MainActivity extends AppCompatActivity {
     String TempPassword = "NOT_FOUND";
     public static final  String UserName = "";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         sqLiteHelper = new myDbAdapter.myDbHelper(this);
 

@@ -18,13 +18,13 @@ public class myDbAdapter {
 
     // methods for CRUD database
 
-    public long insertData(String business_name, String name, String pass){
+    public long insertData( String name, String pass){
 
         SQLiteDatabase dbb = myhelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(myDbHelper.BUSINESS_NAME, business_name);
+       // contentValues.put(myDbHelper.BUSINESS_NAME, business_name);
         contentValues.put(myDbHelper.NAME, name);
-        contentValues.put(myDbHelper.PASSWORD, pass);
+       contentValues.put(myDbHelper.PASSWORD, pass);
 
         long id = dbb.insert(myDbHelper.TABLE_NAME,null, contentValues);
         return id;
@@ -33,16 +33,16 @@ public class myDbAdapter {
 
         static class myDbHelper extends SQLiteOpenHelper{
 
-            public static final String DATABASE_NAME="myDatabase";   // Database Name
+            private static final String DATABASE_NAME="myDatabase";   // Database Name
             public static final String TABLE_NAME = "myTable";    // Table Name
-            public static final int DATABASE_Version = 1; // Database Version
-            public static final String UID = "id";  // Column I (Primary Key)
-            public static final String BUSINESS_NAME = "Business_Name";  //Column II
+            private static final int DATABASE_Version = 1; // Database Version
+            private static final String UID = "id";  // Column I (Primary Key)
+           // public static final String BUSINESS_NAME = "Business_Name";  //Column II
             public static final String NAME = "Name";  //Column III
             public static final String PASSWORD = "Password"; //Column IV
 
 
-     private static  final String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME +"(" +UID +"INTEGER PRIMARY KEY AUTOINCREMENT, "+BUSINESS_NAME+" VARCHAR(255),"+NAME+" VARCHAR(255),"+PASSWORD+" VARCHAR(255)"+ ");";
+     private static  final String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME +"(" +UID +"INTEGER PRIMARY KEY AUTOINCREMENT, "+NAME+" VARCHAR(255),"+PASSWORD+" VARCHAR(255)"+ ");";
 
     private static final String DROP_TABLE = "DROP TABLE IF EXISTS " +TABLE_NAME;
 

@@ -28,24 +28,24 @@ public class Register extends AppCompatActivity {
     }
 
     public void addUser(View view){
-            String t1 = editBusinessName.getText().toString();
-            String t2 = editUsername.getText().toString();
-            String t3 = editPassword.getText().toString();
+            //String t1 = editBusinessName.getText().toString();
+            String t1 = editUsername.getText().toString();
+            String t2 = editPassword.getText().toString();
 
 
-            if(t1.isEmpty() || t2.isEmpty() || t3.isEmpty() ){
+            if(  t1.isEmpty() || t2.isEmpty() ){
                     Message.message(getApplicationContext(), "Please fill in the blanks");
-            }else{
-                long id = helper.insertData(t1, t2, t3);
+            }else {
+                long id = helper.insertData( t1, t2);
                     if(id<=0){
                     Message.message(getApplicationContext(), "Insertion Unsuccessful");
-                    editBusinessName.setText("");
+                    //editBusinessName.setText("");
                     editUsername.setText("");
                     editPassword.setText("");
 
                 }else{
                     Message.message(getApplicationContext(), "Insertion Successful");
-                    editBusinessName.setText("");
+                  //editBusinessName.setText("");
                     editUsername.setText("");
                     editPassword.setText("");
 

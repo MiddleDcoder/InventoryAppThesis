@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StatisticalReports"></activity>
+        <activity android:name=".I_B_AddData"></activity>
+        <activity android:name=".StatisticalReports" />
         <activity android:name=".InventoryStocks" />
         <activity android:name=".Operations" />
         <activity android:name=".OutboundLogistics" />
